@@ -83,62 +83,57 @@ const EditProfile = ({
 
       <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='form-group'>
-          <label className='edit-prof-label'>
-            Web
-            <input
-              className='custom-text-area'
-              type='text'
-              name='website'
-              value={website}
-              onChange={(e) => onChange(e)}
-            />
-          </label>
+          <label className='edit-prof-label'>Web</label>
+
+          <input
+            className='custom-text-area'
+            type='text'
+            name='website'
+            value={website}
+            onChange={(e) => onChange(e)}
+          />
         </div>
         <div className='form-group'>
-          <label className='edit-prof-label'>
-            Location
-            <input
-              className='custom-text-area'
-              type='text'
-              name='location'
-              value={location}
-              onChange={(e) => onChange(e)}
-            />
-          </label>
+          <label className='edit-prof-label'>Location</label>
+
+          <input
+            className='custom-text-area'
+            type='text'
+            name='location'
+            value={location}
+            onChange={(e) => onChange(e)}
+          />
         </div>
         <div className='form-group'>
-          <label className='edit-prof-label'>
-            Employment status
-            <input
-              className='custom-text-area'
-              type='text'
-              name='status'
-              value={status}
-              onChange={(e) => onChange(e)}
-            />
-          </label>
+          <label className='edit-prof-label'>Employment status</label>
+
+          <input
+            className='custom-text-area'
+            type='text'
+            name='status'
+            value={status}
+            onChange={(e) => onChange(e)}
+          />
         </div>
         <div className='form-group'>
-          <label className='edit-prof-label'>
-            Software skills
-            <input
-              className='custom-text-area'
-              type='text'
-              name='skills'
-              value={skills}
-              onChange={(e) => onChange(e)}
-            />
-          </label>
+          <label className='edit-prof-label'>Software skills</label>
+
+          <input
+            className='custom-text-area'
+            type='text'
+            name='skills'
+            value={skills}
+            onChange={(e) => onChange(e)}
+          />
         </div>
         <div className='form-group'>
-          <label className='edit-prof-label'>
-            A few words about yourself
-            <textarea
-              className='custom-text-area'
-              name='bio'
-              value={bio}
-              onChange={(e) => onChange(e)}></textarea>
-          </label>
+          <label className='edit-prof-label'>A few words about yourself</label>
+
+          <textarea
+            className='custom-text-area'
+            name='bio'
+            value={bio}
+            onChange={(e) => onChange(e)}></textarea>
         </div>
         <div className='edit-prof-label my-2'>You are also on:</div>
 
@@ -185,7 +180,8 @@ const EditProfile = ({
             onChange={(e) => onChange(e)}
           />
         </div>
-        <input type='submit' className='btn btn-primary my-1' value='Submit' />
+
+        <input type='submit' className='btn btn-primary ' value='Save' />
       </form>
     </Fragment>
   );

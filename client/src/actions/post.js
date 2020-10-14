@@ -45,6 +45,9 @@ export const searchPosts = (search) => (dispatch) => {
       type: SET_SEARCH,
       payload: search,
     });
+    dispatch({
+      type: CLEAR_TRENDING,
+    });
   } catch (err) {
     dispatch({
       type: SEARCH_ERROR,

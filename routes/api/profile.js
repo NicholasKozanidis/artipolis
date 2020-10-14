@@ -97,8 +97,8 @@ router.post(
         { user: req.user.id },
         { $set: profileFields },
         { new: true, upsert: true }
-      );
-      res.json(profile);
+      ).populate('user', ['name', 'avatar', 'email']);
+      return res.json(profile);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');

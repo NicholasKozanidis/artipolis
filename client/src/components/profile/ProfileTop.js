@@ -32,8 +32,11 @@ const ProfileTop = ({
           alt=''
         />
         <h1 className='large'>{profile.user.name}</h1>
-        <h1 className='large'>{profile.status}</h1>
-        <h1 className='large'>{profile.bio}</h1>
+        <h1 className='light'>{profile.status}</h1>
+        <h2 className='light'>{profile.bio}</h2>
+        <h3 className='light'>
+          <i class='fas fa-map-marker'> </i> {profile.location}
+        </h3>
 
         <p className='lead'>
           {status}

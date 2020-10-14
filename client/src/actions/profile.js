@@ -7,6 +7,7 @@ import {
   PROFILE_ERROR,
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
+  UPDATE_PROFILE,
   SET_PROFILE_IMAGE_LOADING,
   CLEAR_IMAGE_LOADING,
   GET_FOLLOWERS,
@@ -143,13 +144,11 @@ export const editProfile = (formData, history) => async (dispatch) => {
 
     const res = await axios.post('/api/profile', formData, config);
     dispatch({
-      type: GET_PROFILE,
+      type: UPDATE_PROFILE,
       payload: res.data,
     });
 
     dispatch(setAlert('Profile Updated'));
-
-    history.push('/me');
   } catch (err) {
     const errors = err.response.data.errors;
 

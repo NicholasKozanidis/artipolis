@@ -17,23 +17,6 @@ $bg4: #735983;
 $color-dark: scale-color($bg, $lightness: -30%);
 $transition: 280ms all 120ms ease-out;
 
-@mixin aspect-ratio($width, $height) {
-  position: relative;
-  &:before {
-    display: block;
-    content: '';
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
-  }
-  > .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -148,9 +131,24 @@ nav {
   line-height: 1.2;
   margin-bottom: 1rem;
 }
+.light {
+  font-size: 1.5rem;
+  opacity: 0.8;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
 
 .lead {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.saveico {
+  position: absolute;
+  top: 156%;
+  left: 19.8%;
+  font-size: 1.5rem;
+  display: flex;
+  color: $primary2;
   margin-bottom: 1rem;
 }
 
@@ -455,10 +453,10 @@ button {
   color: #38a1f3;
 }
 .form .social-input i.fa-facebook {
-  color: #3b5998;
+  color: #38a1f3;
 }
 .form .social-input i.fa-instagram {
-  color: #3f729b;
+  color: $primary;
 }
 .form .social-input i.fa-youtube {
   color: #c4302b;
