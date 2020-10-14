@@ -32,7 +32,7 @@ body {
 }
 
 a {
-  color: var(--primary-color);
+  color: white;
   text-decoration: none;
 }
 
@@ -142,15 +142,6 @@ nav {
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
-.saveico {
-  position: absolute;
-  top: 156%;
-  left: 19.8%;
-  font-size: 1.5rem;
-  display: flex;
-  color: $primary2;
-  margin-bottom: 1rem;
-}
 
 .text-center {
   text-align: center;
@@ -158,6 +149,10 @@ nav {
 
 .text-primary {
   color: white;
+}
+
+.text-colored {
+  color: $primary2;
 }
 
 .text-dark {
@@ -203,11 +198,17 @@ nav {
 .m-3 {
   margin: 3rem;
 }
+.my- {
+  margin: -2.2rem 0;
+}
 .my {
   margin: 0.5rem 0;
 }
 .my-1 {
   margin: 1rem 0;
+}
+.my-1.5 {
+  margin: 1.5rem 0;
 }
 .my-2 {
   margin: 2rem 0;
@@ -261,7 +262,7 @@ nav {
 .bg-light,
 .badge-light,
 .alert-light {
-  background: var(--light-color);
+  background: $primary3;
   color: #333;
 }
 
@@ -555,7 +556,7 @@ button {
   &:focus {
     cursor: pointer;
     opacity: 1;
-    background: rgba($bg, 0.5);
+    background: rgba($bg, 0.8);
   }
 }
 

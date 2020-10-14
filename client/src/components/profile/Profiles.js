@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import ProfileItem from './ProfileItem';
+import { Link } from 'react-router-dom';
+
+import { motion } from 'framer-motion';
 
 import { getProfiles } from '../../actions/profile';
 
@@ -16,10 +19,19 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <div className='profiles'>
+          <div className='img-grid'>
             {profiles.length > 0 ? (
               profiles.map((profile) => (
-                <ProfileItem key={profile._id} profile={profile} />
+                <Link to={`/${profile.alias}`}>
+                  <motion.div
+                    className='img-wrap'
+                    layout
+                    whileHover={{ opacity: 1 }}
+                    s
+                    onClick={() => console.log('clicked')}>
+                    <ProfileItem key={profile._id} profile={profile} />
+                  </motion.div>
+                </Link>
               ))
             ) : (
               <h1>No profiles found</h1>

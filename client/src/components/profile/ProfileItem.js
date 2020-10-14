@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const ProfileItem = ({
@@ -7,19 +6,20 @@ const ProfileItem = ({
     alias,
     user: { _id, name, avatar },
     status,
+    followers,
+    following,
     location,
     skills,
   },
 }) => {
   return (
-    <div className='profile bg-light'>
-      <Link to={`/${alias}`}>
-        <img src={avatar.url} alt='' className='profile-img' />
-        <div>
-          <h2>{name}</h2>
-          <p>{status}</p>
-        </div>
-      </Link>
+    <div className='profile'>
+      <img src={avatar.url} alt='' className='profile-img' />
+      <div className='post-details'>
+        <span> {name}</span>
+        <br />
+        {status}
+      </div>
     </div>
   );
 };

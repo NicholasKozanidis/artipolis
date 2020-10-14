@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostItem from '../posts/PostItem';
 import { getPosts } from '../../actions/post';
+import { motion } from 'framer-motion';
 
 const ProfileGallery = ({ auth, profile, getPosts, post: { posts, user } }) => {
   useEffect(() => {
@@ -11,11 +12,18 @@ const ProfileGallery = ({ auth, profile, getPosts, post: { posts, user } }) => {
 
   return (
     <Fragment>
-      <div className='posts'>
+      <div className='img-grid'>
         {posts
           .filter((post) => post.user._id === profile.profile.user._id)
           .map((filteredPost) => (
-            <PostItem key={filteredPost._id} post={filteredPost} />
+            <motion.div
+              className='img-wrap'
+              layout
+              whileHover={{ opacity: 1 }}
+              s
+              onClick={() => console.log('clicked')}>
+              <PostItem key={filteredPost._id} post={filteredPost} />
+            </motion.div>
           ))}
       </div>
     </Fragment>

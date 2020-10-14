@@ -35,7 +35,7 @@ const ProfileAlias = ({
           </Fragment>
           <Fragment>
             <ProfileNavbar profile={profile} />
-            <div className='profile-grid my-1'>
+            <div className=' my-1'>
               {location.pathname === `/${profile.alias}` && (
                 <ProfileGallery profile={profile} />
               )}

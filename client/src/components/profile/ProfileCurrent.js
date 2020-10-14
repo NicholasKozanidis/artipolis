@@ -18,7 +18,7 @@ const ProfileCurrent = ({
 
   useEffect(() => {
     getCurrentProfile();
-    if (profile !== null) history.push(`/${profile.alias}`);
+    history.push(`/${auth.user.email.split('@')[0]}`);
   }, [getCurrentProfile, profile]);
 
   return (

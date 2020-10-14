@@ -14,56 +14,55 @@ const PostItem = ({
   showActions,
 }) => {
   return (
-    <div className='post bg-dark p-1 my-1'>
-      <div>
-        <Link to={`/${user.email.split('@')[0]}`}>
+    <Fragment>
+      <Link to={`/${user.email.split('@')[0]}`}>
+        <div>
           <img className='profile-img' src={user.avatar.url} alt='' />
+        </div>
+        <div>
+          <Link to={`/posts/${_id}`}>
+            <img src={imagepost.url} alt='' />
+          </Link>
+          <div className='post-details my-'>
+            <p>{name}</p>
 
-          <h4>{name}</h4>
-        </Link>
-      </div>
-      <div>
-        <Link to={`/posts/${_id}`}>
-          <img src={imagepost.url} alt='' />
-        </Link>
+            <p>{text}</p>
+            <p className='post-date'>
+              Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+            </p>
 
-        <p className='my-1'>{text}</p>
-        <p className='post-date'>
-          Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
-        </p>
-
-        <Fragment>
-          <button
-            onClick={() => addLike(_id)}
-            type='button'
-            className='btn btn-light'>
-            <i className='fas fa-thumbs-up' />{' '}
-            <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-          </button>
-          <button
-            onClick={() => removeLike(_id)}
-            type='button'
-            className='btn btn-light'>
-            <i className='fas fa-thumbs-down' />
-          </button>
-          <span>
-            Comments{' '}
-            {comments.length > 0 && (
-              <span className='comment-count'>{comments.length}</span>
-            )}
-          </span>
-
-          {!auth.loading && user === auth.user._id && (
             <button
-              onClick={() => deletePost(_id)}
+              onClick={() => addLike(_id)}
               type='button'
-              className='btn btn-danger'>
-              <i className='fas fa-times' />
+              className='btn btn-light'>
+              <i className='fas fa-thumbs-up' />{' '}
+              <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
             </button>
-          )}
-        </Fragment>
-      </div>
-    </div>
+            <button
+              onClick={() => removeLike(_id)}
+              type='button'
+              className='btn btn-light'>
+              <i className='fas fa-thumbs-down' />
+            </button>
+            <span>
+              Comments{' '}
+              {comments.length > 0 && (
+                <span className='comment-count'>{comments.length}</span>
+              )}
+            </span>
+
+            {!auth.loading && user === auth.user._id && (
+              <button
+                onClick={() => deletePost(_id)}
+                type='button'
+                className='btn btn-danger'>
+                <i className='fas fa-times' />
+              </button>
+            )}
+          </div>
+        </div>
+      </Link>
+    </Fragment>
   );
 };
 

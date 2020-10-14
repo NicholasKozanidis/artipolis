@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostItem from '../posts/PostItem';
 import { getProfileLiked } from '../../actions/profile';
+import { motion } from 'framer-motion';
 
 const ProfileLiked = ({
   getProfileLiked,
@@ -19,9 +20,16 @@ const ProfileLiked = ({
   }, [getProfileLiked, alias]);
   return (
     <Fragment>
-      <div className='posts'>
+      <div className='img-grid'>
         {likedposts.map((post) => (
-          <PostItem key={post._id} post={post} />
+          <motion.div
+            className='img-wrap'
+            layout
+            whileHover={{ opacity: 1 }}
+            s
+            onClick={() => console.log('clicked')}>
+            <PostItem key={post._id} post={post} />
+          </motion.div>
         ))}
       </div>
     </Fragment>
