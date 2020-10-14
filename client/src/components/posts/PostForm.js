@@ -30,16 +30,17 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
 
   return (
     <Fragment>
-      <div className='post-form'>
-        <div className='bg-dark p'>
-          <h3>Say Something...</h3>
-          <div className='img-preview'>
-            {' '}
-            <img src={preview} />
-          </div>
-        </div>
+      <div className='bg-dark p'>
+        <h3>Post New Artwork</h3>
+      </div>
+      <div className='img-preview'>
+        {' '}
+        <img src={preview} />
+      </div>
+
+      <div className='post-form bg-dark'>
         <form
-          className='form bg-dark my-30'
+          className='form  my-30'
           onSubmit={(e) => {
             e.preventDefault();
             let formData = new FormData();
@@ -50,18 +51,25 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
             setText('');
             setImg(null);
           }}>
-          <input type='file' onChange={handleChange} />
-          <span>+</span>
+          <label className='custom-file-input'>
+            <input onChange={handleChange} type='file' />
+          </label>
+
           <div>{<ProgressBar imageloading={imageloading} />}</div>
           <textarea
+            className='custom-text-area  my-2'
             name='text'
+            placeholder='Artwork Description'
             cols='30'
             rows='5'
-            placeholder='Create a post'
             value={text}
             onChange={(e) => setText(e.target.value)}
             required=''></textarea>
-          <input type='submit' className='btn btn-dark my-1' value='Submit' />
+          <input
+            type='submit'
+            className='btn btn-dark inline '
+            value='Submit'
+          />
         </form>
       </div>
     </Fragment>

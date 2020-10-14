@@ -20,7 +20,6 @@ const ProfileAlias = ({
 }) => {
   useEffect(() => {
     getProfileByAlias(match.params.alias);
-    console.log(location.pathname);
   }, [getProfileByAlias, match.params.alias]);
 
   return (

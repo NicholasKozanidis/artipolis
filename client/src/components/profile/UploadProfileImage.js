@@ -32,13 +32,17 @@ const UploadProfileImage = ({
             formData.append('img', img);
             addProfileImage(formData);
           }}>
-          <input type='file' onChange={handleChange} />
-          <span>+</span>
+          <label className='custom-file-input btn-dark  inline3'>
+            <input type='file' onChange={handleChange} />
+          </label>
           <div className='output'>
-            {img && <div>{img.name}</div>}
             {img && <ProgressBar imageloading={imageloading} />}
           </div>
-          <input type='submit' className='btn btn-dark my-1' value='Submit' />
+          <input
+            type='submit'
+            className='btn btn-dark my-1 inline2'
+            value='Submit'
+          />
         </form>
       </div>
     </Fragment>

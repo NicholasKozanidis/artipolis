@@ -1,6 +1,8 @@
-const CLOUD_NAME = 'freakolas';
-const API_KEY = '618414258757733';
-const API_SECRET = 'cHWMmiB7W0xiY1bgaXjRWWtoNn8';
+const config = require('config');
+
+const CLOUD_NAME = config.get('cloudname');
+const API_KEY = config.get('apiKEY');
+const API_SECRET = config.get('apiSECRET');
 
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;

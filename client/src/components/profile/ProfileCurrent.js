@@ -19,7 +19,7 @@ const ProfileCurrent = ({
   useEffect(() => {
     getCurrentProfile();
     if (profile !== null) history.push(`/${profile.alias}`);
-  }, [getCurrentProfile]);
+  }, [getCurrentProfile, profile]);
 
   return (
     <Fragment>

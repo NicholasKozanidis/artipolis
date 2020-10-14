@@ -3,8 +3,19 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import { getCurrentProfile } from '../../actions/profile';
 
-const Navbar = ({ auth, logout, history }) => {
+const Navbar = ({
+  profile: { profile, loading },
+  getCurrentProfile,
+  auth,
+  logout,
+  history,
+}) => {
+  useEffect(() => {
+    if (auth.isAuthenticated) getCurrentProfile();
+  }, [getCurrentProfile, auth]);
+
   const authLinks = (
     <ul>
       <li>
@@ -84,10 +95,16 @@ const Navbar = ({ auth, logout, history }) => {
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  profile: state.profile,
+
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logout })(withRouter(Navbar));
+export default connect(mapStateToProps, { logout, getCurrentProfile })(
+  withRouter(Navbar)
+);
