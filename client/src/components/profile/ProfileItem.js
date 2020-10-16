@@ -7,8 +7,8 @@ const ProfileItem = ({
     user: { _id, name, avatar },
     status,
     followers,
-    following,
     location,
+    following,
     skills,
   },
 }) => {
@@ -19,6 +19,13 @@ const ProfileItem = ({
         <span> {name}</span>
         <br />
         {status}
+        <br />
+        {location && (
+          <div>
+            {' '}
+            <i class='fas fa-map-marker'> </i> {location}
+          </div>
+        )}
       </div>
     </div>
   );

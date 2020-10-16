@@ -301,7 +301,7 @@ router.put('/unfollow/:id', auth, async (req, res) => {
       .map((following) => following._id.toString())
       .indexOf(req.params.id);
 
-    profile_following.followers.splice(removeIndex_, 1);
+    profile_following.following.splice(removeIndex_, 1);
 
     await profile_follower.save();
     await profile_following.save();
@@ -333,14 +333,9 @@ router.post('/image', auth, upload.single('img'), async (req, res) => {
         alias: user.email.split('@')[0],
         company: '',
         location: '',
-        website:
-          website && website !== ''
-            ? normalize(website, { forceHttps: true })
-            : '',
+        website: '',
         bio: '',
-        skills: Array.isArray(skills)
-          ? skills
-          : skills.split(',').map((skill) => ' ' + skill.trim()),
+        skills: '',
         status: '',
       };
 

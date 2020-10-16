@@ -12,16 +12,18 @@ const SearchBar = ({ clearSearch, searchPosts, post: { searchposts } }) => {
     let selected = e.target.value;
     setSearch(selected);
     searchPosts(search);
+    if (selected.length === 0) {
+      searchPosts('');
+    }
   };
 
   return (
     <Fragment>
-      <motion.div className='searchBox' onHoverEnd={clearSearch}>
+      <motion.div className='searchBox'>
         <input
           className='searchInput'
           type='text'
           name='search'
-          pattern='.*\S.*'
           value={search}
           onChange={handleChange}
           placeholder='Search'

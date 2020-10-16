@@ -49,7 +49,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         searchposts: state.posts.filter((post) =>
-          post.text.toLowerCase().includes(payload.toLowerCase())
+          post.text.toLowerCase().includes(payload.trim().toLowerCase())
         ),
         loading: false,
       };

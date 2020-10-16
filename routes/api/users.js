@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
 const normalize = require('normalize-url');
-
+const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
 // @route    POST api/users
@@ -51,7 +51,6 @@ router.post(
       user = new User({
         name,
         email,
-        avatarempty,
         avatar: { url: avatarempty },
         password,
       });
@@ -77,6 +76,25 @@ router.post(
           res.json({ token });
         }
       );
+
+      const profileFields = {
+        user: user._id,
+        alias: user.email.split('@')[0],
+        company: '',
+        location: '',
+        website: '',
+        bio: '',
+        skills: '',
+        status: '',
+      };
+
+      // Using upsert option (creates new doc if no match is found):
+      let profile = await Profile.findOneAndUpdate(
+        { user: user._id },
+        { $set: profileFields },
+        { new: true, upsert: true }
+      );
+      profile.save();
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');

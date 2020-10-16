@@ -63,8 +63,7 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
             cols='30'
             rows='5'
             value={text}
-            onChange={(e) => setText(e.target.value)}
-            required=''></textarea>
+            onChange={(e) => setText(e.target.value)}></textarea>
           <input
             type='submit'
             className='btn btn-dark inline '

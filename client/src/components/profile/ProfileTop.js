@@ -31,13 +31,13 @@ const ProfileTop = ({
           src={profile.user.avatar.url}
           alt=''
         />
+        <br />
         <h1 className='large'>{profile.user.name}</h1>
         <h1 className='light'>{profile.status}</h1>
         <h2 className='light'>{profile.bio}</h2>
         <h3 className='light'>
           <i class='fas fa-map-marker'> </i> {profile.location}
         </h3>
-
         <p className='lead'>
           {status}
           {company && <span> at {company}</span>}
@@ -92,14 +92,14 @@ const ProfileTop = ({
                         onClick={() => addFollow(profile.user._id)}
                         type='button'
                         className='btn btn-light'>
-                        <i className='lni lni-brush'></i> )}
+                        <i className='lni lni-brush'></i> Follow
                       </button>
                     ) : (
                       <button
                         onClick={() => removeFollow(profile.user._id)}
                         type='button'
                         className='btn btn-dark'>
-                        <i className='lni lni-brush'></i>
+                        <i className='lni lni-brush'></i> Unfollow
                       </button>
                     )
                   )
@@ -108,7 +108,7 @@ const ProfileTop = ({
                     onClick={() => addFollow(profile.user._id)}
                     type='button'
                     className='btn btn-light'>
-                    <i className='lni lni-brush'></i>{' '}
+                    <i className='lni lni-brush'></i> Follow
                   </button>
                 )}
               </Fragment>

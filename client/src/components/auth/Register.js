@@ -49,7 +49,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             value={lastname}
             onChange={(e) => onChange(e)}
             name='lastname'
-            minlength='6'
           />
         </div>
         <div className='form-group'>

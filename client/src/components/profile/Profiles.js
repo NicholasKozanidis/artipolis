@@ -28,7 +28,9 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                     layout
                     whileHover={{ opacity: 1 }}
                     s
-                    onClick={() => console.log('clicked')}>
+                    animate={{
+                      boxShadow: '6px 6px 0 rgba(0, 0, 0, 0.7)',
+                    }}>
                     <ProfileItem key={profile._id} profile={profile} />
                   </motion.div>
                 </Link>

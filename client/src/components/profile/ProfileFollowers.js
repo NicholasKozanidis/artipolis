@@ -4,6 +4,8 @@ import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import ProfileItem from './ProfileItem';
 import { getProfileFollowers } from '../../actions/profile';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const ProfileFollowers = ({
   getProfileFollowers,
@@ -25,17 +27,26 @@ const ProfileFollowers = ({
         <Spinner />
       ) : (
         <Fragment>
-          <div className='profiles'>
+          <div className='img-grid'>
             {profiles.length > 0 ? (
               profiles.map((profile) => (
-                <ProfileItem
-                  key={profile._id}
-                  profile={profile}
-                  alias={alias}
-                />
+                <Link to={`/${profile.alias}`}>
+                  <motion.div
+                    className='img-wrap'
+                    layout
+                    whileHover={{ opacity: 1 }}
+                    s
+                    onClick={() => console.log('clicked')}>
+                    <ProfileItem
+                      key={profile._id}
+                      profile={profile}
+                      alias={alias}
+                    />
+                  </motion.div>
+                </Link>
               ))
             ) : (
-              <h1>No Followers</h1>
+              <h1 className='text-colored'>No followers yet</h1>
             )}
           </div>
         </Fragment>
