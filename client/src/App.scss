@@ -12,8 +12,7 @@ $primary2: #ff687e;
 $primary3: #ffaf87;
 $bg: #343a40;
 $bg2: #43516c;
-$bg3: #255d83;
-$bg4: #735983;
+$bg3: #735983;
 $color-dark: scale-color($bg, $lightness: -30%);
 $transition: 280ms all 120ms ease-out;
 
@@ -106,7 +105,7 @@ nav {
 .progress-bar {
   height: 5px;
   background-color: $primary2;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 /* Utilities */
@@ -305,7 +304,11 @@ nav {
 
 .btn:hover {
   color: $primary;
+  transition: all 0.3s ease;
   border: #ccc solid 0.5px;
+}
+.btn:active {
+  transform: scale(0.8);
 }
 
 .bg-light,
@@ -337,10 +340,9 @@ nav {
   justify-content: center;
   display: flexbox;
 }
-.inline {
-  position: absolute;
-  left: 44.5%;
-  top: 100%;
+.custom-fix {
+  margin-top: 0;
+  margin-left: 42%;
 }
 
 .inline2 {
@@ -394,9 +396,10 @@ label input[type='file'] {
   background: $bg;
   color: white;
   border: 1px solid black;
-  border-radius: 3px;
-  padding: 0.4rem 1.3rem;
-  left: 43%;
+  border-radius: 10%;
+  padding: 0.4rem 0.4rem 0.5rem;
+  transition: all 0.4s ease;
+  left: 45%;
   top: 79.5%;
   outline: none;
   white-space: nowrap;
@@ -406,6 +409,9 @@ label input[type='file'] {
 
 .custom-file-input:hover:before {
   background: $primary;
+}
+.custom-file-input:active:before {
+  transform: scale(0.9);
 }
 
 .edit-prof-label {
@@ -419,6 +425,7 @@ label input[type='file'] {
   background: $bg3;
   color: white;
   padding: 0.4rem;
+  padding-top: 2rem;
   font-size: 1.2rem;
   border: 1px solid rgba(204, 102, 134, 0.7);
   &:focus,
@@ -523,11 +530,13 @@ button {
 }
 .img-preview {
   position: absolute;
-  width: 640px;
-  height: 480px;
-  display: block;
+  width: 680px;
+  height: 380px;
+  max-width: 30%;
+  min-height: 20%;
+  display: flex;
   top: 30%;
-  left: 30%;
+  left: 35%;
 }
 
 .post-details img {
@@ -541,6 +550,18 @@ button {
 
   top: 7%;
   left: -10%;
+}
+.post-img-skeleton {
+  position: absolute;
+  width: 1040px;
+  height: 430px;
+  border: solid 1px rgba($bg3, 0.8);
+  border-radius: 3%;
+  display: flex;
+  justify-self: auto;
+  background: $bg;
+  top: 27%;
+  left: 19%;
 }
 
 .post-details span {

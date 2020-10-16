@@ -10,7 +10,12 @@ const ProfileNavbar = ({ auth, profile: { profile } }) => {
         <Link to={`/${profile.alias}`}>Posts</Link>
       </li>
       <li>
-        <Link to={`/${profile.alias}/liked`}>Likes</Link>
+        <Link to={`/${profile.alias}/liked`}>
+          Liked
+          <span>
+            {profile.liked.length > 0 && <span>({profile.liked.length})</span>}
+          </span>
+        </Link>
       </li>
       <li>
         <Link to={`/${profile.alias}/following`}>

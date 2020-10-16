@@ -33,6 +33,7 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
       <div className='bg-dark p'>
         <h3>Post New Artwork</h3>
       </div>
+      <div className='post-img-skeleton'></div>
       <div className='img-preview'>
         {' '}
         <img src={preview} />
@@ -50,6 +51,7 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
             addPost(formData);
             setText('');
             setImg(null);
+            setPreview(null);
           }}>
           <label className='custom-file-input'>
             <input onChange={handleChange} type='file' />
@@ -64,11 +66,13 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
             rows='5'
             value={text}
             onChange={(e) => setText(e.target.value)}></textarea>
-          <input
-            type='submit'
-            className='btn btn-dark inline '
-            value='Submit'
-          />
+          {text !== '' && img !== null && (
+            <input
+              type='submit'
+              className='btn btn-dark custom-fix'
+              value='Publish'
+            />
+          )}
         </form>
       </div>
     </Fragment>
