@@ -79,7 +79,7 @@ const EditProfile = ({
       <div>
         <UploadProfileImage profile={profile} />
       </div>
-      <h1 className='large text-primary'>Edit Your Profile</h1>
+      <h1 className='large text-colored'>Edit Your Profile</h1>
 
       <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='form-group'>
