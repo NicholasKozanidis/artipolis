@@ -11,10 +11,10 @@ const CommentItem = ({
   deleteComment,
   comment: { _id, text, name, avatar, user, date },
 }) => (
-  <div class='post bg-white p-1 my-1'>
+  <div class='post bg-dark p-1 my-1'>
     <div>
       <Link to={`/profile/${user}`}>
-        <img class='round-img' src={avatar.url} alt='' />
+        <img class='profile-img' src={avatar.url} alt='' />
         <h4>{name}</h4>
       </Link>
     </div>

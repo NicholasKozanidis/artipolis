@@ -17,20 +17,20 @@ const PostItem = ({
     <Fragment>
       <Link to={`/${user.email.split('@')[0]}`}>
         <div>
+          <p className='post-name'>{name}</p>
+
           <img className='profile-img' src={user.avatar.url} alt='' />
         </div>
-        <div>
-          <Link to={`/posts/${_id}`}>
-            <img src={imagepost.url} alt='' />
-          </Link>
-          <div className='post-details my-'>
-            <p>{name}</p>
+      </Link>
 
-            <p>{text}</p>
-            <p className='post-date'>
-              Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
-            </p>
+      <div>
+        <Link to={`/posts/${_id}`}>
+          <img src={imagepost.url} alt='' />
+        </Link>
+        <div className='bg-dark my-2'>
+          <p className='lead p-2'>{text}</p>
 
+          <div className='post-buttons'>
             <button
               onClick={() => addLike(_id)}
               type='button'
@@ -59,9 +59,12 @@ const PostItem = ({
                 <i className='fas fa-times' />
               </button>
             )}
+            <p className='post-date'>
+              Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+            </p>
           </div>
         </div>
-      </Link>
+      </div>
     </Fragment>
   );
 };

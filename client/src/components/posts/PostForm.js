@@ -33,13 +33,12 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
       <div className='bg-dark p'>
         <h3>Post New Artwork</h3>
       </div>
-      <div className='post-img-skeleton'></div>
-      <div className='img-preview'>
-        {' '}
-        <img src={preview} />
-      </div>
 
       <div className='post-form bg-dark'>
+        <div className='img-preview bg-dark'>
+          {' '}
+          <img src={preview} />
+        </div>
         <form
           className='form  my-30'
           onSubmit={(e) => {

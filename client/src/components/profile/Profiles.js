@@ -29,6 +29,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                     whileHover={{ opacity: 1 }}
                     s
                     animate={{
+                      borderRadius: 30,
                       boxShadow: '6px 6px 0 rgba(0, 0, 0, 0.7)',
                     }}>
                     <ProfileItem key={profile._id} profile={profile} />

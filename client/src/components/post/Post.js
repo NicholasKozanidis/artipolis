@@ -17,12 +17,13 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
   ) : (
     <Fragment>
       <PostItem post={post} showActions={true} />
-      <CommentForm postId={post._id} />
       <div className='comments'>
+        <h3 className='text-primary'>Comment</h3>
         {post.comments.map((comment) => (
           <CommentItem key={comment._id} comment={comment} postId={post._id} />
         ))}
       </div>
+      <CommentForm postId={post._id} />
     </Fragment>
   );
 };

@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import PostItem from '../posts/PostItem';
 import { getProfileLiked } from '../../actions/profile';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const ProfileLiked = ({
   getProfileLiked,
@@ -22,14 +22,22 @@ const ProfileLiked = ({
     <Fragment>
       <div className='img-grid'>
         {likedposts.map((post) => (
-          <motion.div
-            className='img-wrap'
-            layout
-            whileHover={{ opacity: 1 }}
-            s
-            onClick={() => console.log('clicked')}>
-            <PostItem key={post._id} post={post} />
-          </motion.div>
+          <Link to={`/posts/${post._id}`}>
+            <motion.div
+              className='img-wrap'
+              layout
+              whileHover={{ opacity: 1 }}
+              s
+              onClick={() => console.log('clicked')}>
+              <div className='post-details'>
+                <img src={post.user.avatar.url} />
+                <span> {post.user.name}</span>
+                <br />
+                {post.text}
+              </div>
+              <img src={post.imagepost.url} alt='' />
+            </motion.div>
+          </Link>
         ))}
       </div>
     </Fragment>

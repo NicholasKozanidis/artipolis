@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import PostItem from '../posts/PostItem';
 import { getPosts } from '../../actions/post';
 import { motion } from 'framer-motion';
 
@@ -22,7 +21,13 @@ const ProfileGallery = ({ auth, profile, getPosts, post: { posts, user } }) => {
               whileHover={{ opacity: 1 }}
               s
               onClick={() => console.log('clicked')}>
-              <PostItem key={filteredPost._id} post={filteredPost} />
+              <div className='post-details'>
+                <img src={filteredPost.user.avatar.url} />
+                <span> {filteredPost.user.name}</span>
+                <br />
+                {filteredPost.text}
+              </div>
+              <img src={filteredPost.imagepost.url} alt='' />{' '}
             </motion.div>
           ))}
       </div>
