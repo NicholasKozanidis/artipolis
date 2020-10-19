@@ -8,8 +8,11 @@ const Alert = ({ alerts }) =>
   alerts.length > 0 &&
   alerts.map((alert) => (
     <motion.div
-      animate={{ opacity: [0, 0.5, 1, 1, 0.5, 0], x: 800 }}
-      transition={{ ease: 'easeOut', duration: 2 }}
+      animate={{
+        opacity: [0, 0.5, 1, 1, 1, 0],
+        x: [100, 600, 2000],
+      }}
+      transition={{ ease: 'easeOut', duration: 3 }}
       key={alert.id}
       className={`alert alert-${alert.alertType}`}>
       {alert.msg}
