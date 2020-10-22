@@ -7,6 +7,7 @@ import {
   PROFILE_ERROR,
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
+  FOLLOW_TOGGLE,
   UPDATE_PROFILE,
   SET_PROFILE_IMAGE_LOADING,
   CLEAR_IMAGE_LOADING,
@@ -220,6 +221,20 @@ export const removeFollow = (id) => async (dispatch) => {
     dispatch({
       type: UPDATE_FOLLOW,
       payload: { id, followers: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: FOLLOW_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+// Remove like
+export const setFollowToggle = (id, auth_id) => (dispatch) => {
+  try {
+    dispatch({
+      type: FOLLOW_TOGGLE,
+      payload: { id, auth_id },
     });
   } catch (err) {
     dispatch({

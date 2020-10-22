@@ -16,6 +16,7 @@ import {
   GET_POST,
   ADD_COMMENT,
   REMOVE_COMMENT,
+  SET_LATEST,
 } from '../actions/types';
 
 const initialState = {
@@ -59,6 +60,12 @@ export default function (state = initialState, action) {
         trendingposts: state.posts
           .slice()
           .sort((a, b) => b.likes.length - a.likes.length),
+        loading: false,
+      };
+    case SET_LATEST:
+      return {
+        ...state,
+        latestposts: state.posts,
         loading: false,
       };
     case CLEAR_SEARCH:

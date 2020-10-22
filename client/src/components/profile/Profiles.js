@@ -26,12 +26,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                   <motion.div
                     className='img-wrap'
                     layout
-                    whileHover={{ opacity: 1 }}
-                    s
-                    animate={{
-                      borderRadius: 30,
-                      boxShadow: '6px 6px 0 rgba(0, 0, 0, 0.7)',
-                    }}>
+                    whileHover={{ opacity: 1 }}>
                     <ProfileItem key={profile._id} profile={profile} />
                   </motion.div>
                 </Link>

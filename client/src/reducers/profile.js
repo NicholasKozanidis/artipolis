@@ -5,6 +5,7 @@ import {
   GET_PROFILES,
   GET_FOLLOWERS,
   GET_FOLLOWING,
+  FOLLOW_TOGGLE,
   SET_PROFILE_IMAGE_LOADING,
   CLEAR_IMAGE_LOADING,
   GET_LIKED,
@@ -18,6 +19,7 @@ import {
 
 const initialState = {
   profile: null,
+  follow: false,
   imageloading: null,
   profiles: [],
   likedposts: [],
@@ -71,6 +73,16 @@ export default function (state = initialState, action) {
         ),
         profile: { ...state.profile, followers: payload.followers },
         loading: false,
+        follow: !state.follow,
+      };
+    case FOLLOW_TOGGLE:
+      return {
+        ...state,
+        follow: state.profile.followers.some((follower) =>
+          follower._id === payload.auth_id
+            ? { follow: false }
+            : { follow: true }
+        ),
       };
 
     case GET_PROFILES:

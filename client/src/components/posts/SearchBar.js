@@ -1,31 +1,47 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { searchPosts, clearSearch } from '../../actions/post';
+import { useLocation } from 'react-router-dom';
+
+import { useHistory } from 'react-router-dom';
+import { searchNav } from '../../actions/post';
 import { motion } from 'framer-motion';
 
-const SearchBar = ({ clearSearch, searchPosts, post: { searchposts } }) => {
+const SearchBar = ({ searchNav, post: { searchposts } }) => {
   const [search, setSearch] = useState('');
+  let history = useHistory();
+  const location = useLocation();
 
   const handleChange = (e) => {
     let selected = e.target.value;
     setSearch(selected);
-    searchPosts(search);
+    searchNav(selected);
+
     if (selected.length === 0) {
-      searchPosts('');
+      searchNav('');
+    }
+  };
+
+  const handleURL = () => {
+    if (search.length > 0) history.push(`/posts/?search=${search}`);
+  };
+
+  const clearURL = () => {
+    if (location.search.length > 0) {
+      history.push('/posts');
     }
   };
 
   return (
     <Fragment>
-      <motion.div className='searchBox'>
+      <motion.div className='searchBox' onHoverEnd={handleURL}>
         <input
           className='searchInput'
           type='text'
           name='search'
           value={search}
           onChange={handleChange}
+          onFocus={clearURL}
           placeholder='Search'
         />
         <div className='searchButton' href='#'>
@@ -49,14 +65,11 @@ const SearchBar = ({ clearSearch, searchPosts, post: { searchposts } }) => {
 };
 SearchBar.propTypes = {
   post: PropTypes.object.isRequired,
-  searchPosts: PropTypes.func.isRequired,
-  clearSearch: PropTypes.func.isRequired,
+  searchNav: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   post: state.post,
 });
 
-export default connect(mapStateToProps, { searchPosts, clearSearch })(
-  SearchBar
-);
+export default connect(mapStateToProps, { searchNav })(SearchBar);

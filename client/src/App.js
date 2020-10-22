@@ -10,11 +10,9 @@ import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
-import Dashboard from './components/dashboard/Dashboard';
 import EditProfile from './components/profile/EditProfile';
 import Profiles from './components/profile/Profiles';
 import Profile from './components/profile/Profile';
-import Posts from './components/posts/Posts';
 import PostForm from './components/posts/PostForm';
 import Post from './components/post/Post';
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -61,8 +59,6 @@ const App = () => {
               <Route exact path='/profiles' component={Profiles} />
               <Route exact path='/profile/:id' component={Profile} />
               <Route exact path='/me' component={ProfileCurrent} />
-
-              <Route exact path='/dashboard' component={Dashboard} />
               <Route exact path='/posts' component={Gallery} />
               <Route exact path='/posts/:id' component={Post} />
               <PrivateRoute

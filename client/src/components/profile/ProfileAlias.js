@@ -9,9 +9,10 @@ import ProfileLiked from './ProfileLiked';
 import ProfileFollowers from './ProfileFollowers';
 import ProfileFollowing from './ProfileFollowing';
 import ProfileNavbar from './ProfileNavbar';
-import { getProfileByAlias } from '../../actions/profile';
+import { getProfileByAlias, setFollowToggle } from '../../actions/profile';
 
 const ProfileAlias = ({
+  setFollowToggle,
   getProfileByAlias,
   profile: { profile, loading },
   match,
@@ -20,6 +21,10 @@ const ProfileAlias = ({
 }) => {
   useEffect(() => {
     getProfileByAlias(match.params.alias);
+
+    if (auth.user !== null && profile.user !== null) {
+      setFollowToggle(profile.user._id, auth.user._id);
+    }
   }, [getProfileByAlias, match.params.alias]);
 
   return (
@@ -58,6 +63,7 @@ const ProfileAlias = ({
 
 ProfileAlias.propTypes = {
   getProfileByAlias: PropTypes.func.isRequired,
+  setFollowToggle: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
 };
@@ -67,4 +73,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getProfileByAlias })(ProfileAlias);
+export default connect(mapStateToProps, { getProfileByAlias, setFollowToggle })(
+  ProfileAlias
+);

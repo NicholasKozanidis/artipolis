@@ -9,8 +9,8 @@ import {
   CLEAR_SEARCH,
   SEARCH_ERROR,
   SET_TRENDING,
-  TRENDING_ERROR,
   SET_LATEST,
+  TRENDING_ERROR,
   CLEAR_LATEST,
   CLEAR_TRENDING,
   LATEST_ERROR,
@@ -39,7 +39,7 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 // Search posts
-export const searchPosts = (search) => (dispatch) => {
+export const searchNav = (search) => (dispatch) => {
   try {
     dispatch({
       type: SET_SEARCH,
@@ -55,12 +55,23 @@ export const searchPosts = (search) => (dispatch) => {
     });
   }
 };
-
 // Search posts
-export const clearSearch = () => (dispatch) => {
+export const searchPosts = (search, posts) => async (dispatch) => {
   try {
+    if (posts.length === 0) {
+      const res = await axios.get('/api/posts');
+
+      dispatch({
+        type: GET_POSTS,
+        payload: res.data,
+      });
+    }
     dispatch({
-      type: CLEAR_SEARCH,
+      type: SET_SEARCH,
+      payload: search,
+    });
+    dispatch({
+      type: CLEAR_TRENDING,
     });
   } catch (err) {
     dispatch({
@@ -69,8 +80,64 @@ export const clearSearch = () => (dispatch) => {
     });
   }
 };
+
 // Sort most liked(trending) posts
-export const trendingPosts = () => (dispatch) => {
+export const trendingPosts = (posts) => async (dispatch) => {
+  try {
+    if (posts.length === 0) {
+      const res = await axios.get('/api/posts');
+
+      dispatch({
+        type: GET_POSTS,
+        payload: res.data,
+      });
+    }
+    dispatch({
+      type: SET_TRENDING,
+    });
+    dispatch({
+      type: CLEAR_LATEST,
+    });
+    dispatch({
+      type: CLEAR_SEARCH,
+    });
+  } catch (err) {
+    dispatch({
+      type: TRENDING_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Sort latest posts
+export const latestPosts = (posts) => async (dispatch) => {
+  try {
+    if (posts.length === 0) {
+      const res = await axios.get('/api/posts');
+
+      dispatch({
+        type: GET_POSTS,
+        payload: res.data,
+      });
+    }
+    dispatch({
+      type: SET_LATEST,
+    });
+    dispatch({
+      type: CLEAR_TRENDING,
+    });
+    dispatch({
+      type: CLEAR_SEARCH,
+    });
+  } catch (err) {
+    dispatch({
+      type: LATEST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+// Sort most liked(trending) posts
+export const trendingNav = () => async (dispatch) => {
   try {
     dispatch({
       type: SET_TRENDING,
@@ -85,8 +152,9 @@ export const trendingPosts = () => (dispatch) => {
     });
   }
 };
+
 // Sort latest posts
-export const latestPosts = () => (dispatch) => {
+export const latestNav = () => async (dispatch) => {
   try {
     dispatch({
       type: CLEAR_TRENDING,

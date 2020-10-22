@@ -29,7 +29,7 @@ const EditProfile = ({
   const [formData, setFormData] = useState(initialState);
 
   useEffect(() => {
-    if (!profile) getCurrentProfile();
+    getCurrentProfile();
     if (!loading && profile) {
       const profileData = { ...initialState };
       for (const key in profile) {

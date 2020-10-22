@@ -2,11 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {
-  addFollow,
-  removeFollow,
-  getCurrentProfile,
-} from '../../actions/profile';
+import { addFollow, removeFollow } from '../../actions/profile';
 
 const ProfileTop = ({
   auth,
@@ -21,6 +17,7 @@ const ProfileTop = ({
     bio,
     location,
     followers,
+    follow,
   },
 }) => {
   return (
@@ -79,41 +76,27 @@ const ProfileTop = ({
           )}
         </div>
 
-        {auth.user !== null && profile.user !== null && (
+        {auth.user !== null && profile.user !== null ? (
           <Fragment>
-            {profile.user._id === auth.user._id ? (
-              <div></div>
-            ) : (
-              <Fragment>
-                {profile.followers.length > 0 ? (
-                  profile.followers.map((follower) =>
-                    follower._id !== auth.user._id ? (
-                      <button
-                        onClick={() => addFollow(profile.user._id)}
-                        type='button'
-                        className='btn btn-light'>
-                        <i className='lni lni-brush'></i> Follow
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => removeFollow(profile.user._id)}
-                        type='button'
-                        className='btn btn-dark'>
-                        <i className='lni lni-brush'></i> Unfollow
-                      </button>
-                    )
-                  )
-                ) : (
-                  <button
-                    onClick={() => addFollow(profile.user._id)}
-                    type='button'
-                    className='btn btn-light'>
-                    <i className='lni lni-brush'></i> Follow
-                  </button>
-                )}
-              </Fragment>
-            )}
+            {(follow === false && (
+              <button
+                onClick={() => addFollow(profile.user._id, auth.user._id)}
+                type='button'
+                className='btn btn-light'>
+                <i className='lni lni-brush'></i> Ffollow
+              </button>
+            )) ||
+              (follow === true && (
+                <button
+                  onClick={() => removeFollow(profile.user._id, auth.user._id)}
+                  type='button'
+                  className='btn btn-dark'>
+                  <i className='lni lni-brush'></i> Unfollow
+                </button>
+              ))}
           </Fragment>
+        ) : (
+          <div>zedat</div>
         )}
       </div>
     </Fragment>

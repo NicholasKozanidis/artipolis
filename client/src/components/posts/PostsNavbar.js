@@ -1,23 +1,35 @@
-import React, { Fragment } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-
+import React, { Fragment, useEffect } from 'react';
+import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { latestPosts, trendingPosts } from '../../actions/post';
+import { latestNav, trendingNav } from '../../actions/post';
 
 import PropTypes from 'prop-types';
 
-const PostsNavbar = ({ latestPosts, trendingPosts, post: { posts } }) => {
-  const dispatch = useDispatch();
+const PostsNavbar = ({ latestNav, trendingNav, post: { posts } }) => {
+  let history = useHistory();
+  const location = useLocation();
+
+  let category = 'nav bg-dark ';
+  let active = null;
+
+  useEffect(() => {
+    if (location.search.length === 0) {
+      history.push('/posts/?sort_by=latest');
+    }
+  }, []);
 
   function handleLatest(e) {
     e.preventDefault();
-    latestPosts();
+    latestNav();
+    history.push('/posts/?sort_by=latest');
+    active = 'nav bg-dark active';
   }
 
   function handleTrending(e) {
     e.preventDefault();
-    trendingPosts();
+    trendingNav();
+    history.push(`/posts/?sort_by=trending`);
+    active = 'nav bg-dark active';
   }
   const profileLinks = (
     <ul>
@@ -34,14 +46,12 @@ const PostsNavbar = ({ latestPosts, trendingPosts, post: { posts } }) => {
     </ul>
   );
 
-  return (
-    <nav className='nav bg-dark'>{<Fragment>{profileLinks}</Fragment>}</nav>
-  );
+  return <nav>{<Fragment>{profileLinks}</Fragment>}</nav>;
 };
 
 PostsNavbar.propTypes = {
-  latestPosts: PropTypes.func.isRequired,
-  trendingPosts: PropTypes.func.isRequired,
+  latestNav: PropTypes.func.isRequired,
+  trendingNav: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
 };
 
@@ -49,6 +59,6 @@ const mapStateToProps = (state) => ({
   post: state.profile,
 });
 
-export default connect(mapStateToProps, { latestPosts, trendingPosts })(
+export default connect(mapStateToProps, { latestNav, trendingNav })(
   withRouter(PostsNavbar)
 );

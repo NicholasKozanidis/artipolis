@@ -41,3 +41,4 @@ export const TRENDING_ERROR = 'TRENDING_ERROR';
 export const SET_LATEST = 'SET_LATEST';
 export const CLEAR_LATEST = 'CLEAR_LATEST';
 export const LATEST_ERROR = 'LATEST_ERROR';
+export const FOLLOW_TOGGLE = 'FOLLOW_TOGGLE';

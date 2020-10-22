@@ -6,7 +6,6 @@ import Spinner from '../layout/Spinner';
 import { useHistory } from 'react-router-dom';
 import ProfileTop from './ProfileTop';
 import ProfileGallery from './ProfileGallery';
-import ProfileNavbar from './ProfileNavbar';
 import { getCurrentProfile } from '../../actions/profile';
 
 const ProfileCurrent = ({

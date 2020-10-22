@@ -35,12 +35,12 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
       </div>
 
       <div className='post-form bg-dark'>
-        <div className='img-preview bg-dark'>
+        <div className='img-preview'>
           {' '}
           <img src={preview} />
         </div>
         <form
-          className='form  my-30'
+          className='post-form  my-30'
           onSubmit={(e) => {
             e.preventDefault();
             let formData = new FormData();
