@@ -16,6 +16,7 @@ const ProfileGallery = ({ auth, profile, getPosts, post: { posts, user } }) => {
           .filter((post) => post.user._id === profile.profile.user._id)
           .map((filteredPost) => (
             <motion.div
+              key={filteredPost._id}
               className='img-wrap'
               layout
               whileHover={{ opacity: 1 }}

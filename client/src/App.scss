@@ -1,5 +1,7 @@
 /* Global Styles */
-:root {
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:reg,wght@0,200;1,300&display=swap');
+root {
   --primary-color: #17a2b8;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
@@ -23,7 +25,8 @@ $transition: 280ms all 120ms ease-out;
 }
 
 body {
-  font-family: 'GlyphWorld-AirLand', 'MADE Evolve Sans Regular', sans-serif;
+  font-family: 'Roboto Mono', 'GlyphWorld-AirLand', 'MADE Evolve Sans Regular',
+    sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: $bg2;
@@ -43,13 +46,52 @@ img {
   width: 100%;
 }
 
+@media (max-width: 1048px) {
+  .burger {
+    opacity: 100%;
+    display: flex;
+    left: -10%;
+    z-index: 5;
+  }
+
+  .regular-nav {
+    opacity: 0%;
+  }
+}
+
+@media (max-width: 595px) {
+  .burger {
+    left: -60%;
+  }
+}
+@media (max-width: 414px) {
+  .burger {
+    left: -100%;
+  }
+}
+@media (max-width: 375px) {
+  .burger {
+    left: -150%;
+  }
+}
+
+@media (min-width: 1049px) {
+  .burger {
+    opacity: 0%;
+  }
+}
+
+.regular-nav {
+  margin-left: 30%;
+}
+
 nav {
   background-color: $bg;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: 5;
   width: 100%;
   top: 0;
   border-bottom: solid 1px $primary;
@@ -68,6 +110,7 @@ nav {
         display: inline-block;
         color: #fff;
         font-size: 1.125rem;
+        z-index: 5;
 
         &:focus {
           outline: none;
@@ -85,6 +128,7 @@ nav {
         &.activate {
           border-top-color: $primary;
           color: $primary;
+          z-index: 5;
         }
       }
     }
@@ -218,6 +262,7 @@ nav {
 .my-3 {
   margin: 3rem 0;
 }
+
 .my-30 {
   margin: 60% 15%;
   padding-top: 1%;
@@ -406,7 +451,8 @@ label input[type='file'] {
   color: white;
   border: 1px solid black;
   border-radius: 10%;
-  padding: 0.4rem 0.4rem 0.5rem;
+  padding: 0.4rem 0.9rem 0.5rem;
+  display: flexbox;
   transition: all 0.4s ease;
   left: 42%;
   top: 15px;
@@ -417,7 +463,6 @@ label input[type='file'] {
   @media screen and (max-width: 420px) {
     top: 95%;
     left: 35%;
-    //do Smth
   }
 }
 
@@ -433,12 +478,12 @@ label input[type='file'] {
 }
 
 .custom-text-area {
-  display: block;
+  display: flex;
   width: 100%;
   background: $bg3;
   color: white;
   padding: 0.4rem;
-  padding-top: 2rem;
+
   font-size: 1.2rem;
   border: 1px solid rgba(204, 102, 134, 0.7);
   &:focus {
@@ -468,6 +513,7 @@ label input[type='file'] {
 
   &:active {
     border: 1px solid $primary;
+    transition: all ease 0.2s;
     outline: none;
   }
 }
@@ -664,16 +710,16 @@ button {
   justify-content: center;
 
   @media only screen and (min-width: 640px) {
-    min-width: 400px;
-    min-height: 350px;
-    top: 33%;
+    min-width: 300px;
+    min-height: 250px;
+    top: 31%;
     left: 22%;
   }
   @media only screen and (min-width: 800px) {
-    min-width: 600px;
+    min-width: 500px;
     min-height: 400px;
     top: 35%;
-    left: 15%;
+    left: 25%;
   }
   @media only screen and (min-width: 1024px) {
     min-width: 600px;

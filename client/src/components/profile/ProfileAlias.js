@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileTop from './ProfileTop';
@@ -9,23 +8,22 @@ import ProfileLiked from './ProfileLiked';
 import ProfileFollowers from './ProfileFollowers';
 import ProfileFollowing from './ProfileFollowing';
 import ProfileNavbar from './ProfileNavbar';
-import { getProfileByAlias, setFollowToggle } from '../../actions/profile';
+import { useLocation } from 'react-router-dom';
+import { getProfileByAlias, clearProfile } from '../../actions/profile';
 
 const ProfileAlias = ({
-  setFollowToggle,
   getProfileByAlias,
+  clearProfile,
   profile: { profile, loading },
   match,
-  location,
   auth,
 }) => {
-  useEffect(() => {
-    getProfileByAlias(match.params.alias);
+  const location = useLocation();
 
-    if (auth.user !== null && profile.user !== null) {
-      setFollowToggle(profile.user._id, auth.user._id);
-    }
-  }, [getProfileByAlias, match.params.alias]);
+  useEffect(() => {
+    clearProfile();
+    getProfileByAlias(match.params.alias);
+  }, [getProfileByAlias, , match.params.alias]);
 
   return (
     <Fragment>
@@ -63,7 +61,7 @@ const ProfileAlias = ({
 
 ProfileAlias.propTypes = {
   getProfileByAlias: PropTypes.func.isRequired,
-  setFollowToggle: PropTypes.func.isRequired,
+  clearProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
 };
@@ -73,6 +71,7 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getProfileByAlias, setFollowToggle })(
-  ProfileAlias
-);
+export default connect(mapStateToProps, {
+  getProfileByAlias,
+  clearProfile,
+})(ProfileAlias);

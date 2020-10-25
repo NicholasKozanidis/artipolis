@@ -41,9 +41,7 @@ const ProfileNavbar = ({ auth, profile: { profile } }) => {
   );
 
   return (
-    <nav className='nav nav-center bg-dark'>
-      {<Fragment>{profileLinks}</Fragment>}
-    </nav>
+    <nav className='nav  bg-dark'>{<Fragment>{profileLinks}</Fragment>}</nav>
   );
 };
 

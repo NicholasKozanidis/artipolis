@@ -7,12 +7,17 @@ import { Link } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 
-import { getProfiles } from '../../actions/profile';
+import { getProfiles, clearProfile } from '../../actions/profile';
 
-const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
+const Profiles = ({
+  clearProfile,
+  getProfiles,
+  profile: { profiles, loading },
+}) => {
   useEffect(() => {
     getProfiles();
-  }, [getProfiles]);
+    clearProfile();
+  }, [getProfiles, clearProfile]);
   return (
     <Fragment>
       {loading ? (
@@ -22,7 +27,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
           <div className='img-grid'>
             {profiles.length > 0 ? (
               profiles.map((profile) => (
-                <Link to={`/${profile.alias}`}>
+                <Link key={profile._id} to={`/${profile.alias}`}>
                   <motion.div
                     className='img-wrap'
                     layout
@@ -32,7 +37,9 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                 </Link>
               ))
             ) : (
-              <h1>No profiles found</h1>
+              <h1>
+                <Spinner />
+              </h1>
             )}
           </div>
         </Fragment>
@@ -43,6 +50,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 
 Profiles.propTypes = {
   getProfiles: PropTypes.func.isRequired,
+  clearProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
@@ -50,4 +58,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getProfiles })(Profiles);
+export default connect(mapStateToProps, { getProfiles, clearProfile })(
+  Profiles
+);

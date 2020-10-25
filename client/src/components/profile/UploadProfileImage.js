@@ -34,7 +34,7 @@ const UploadProfileImage = ({
             setImg(null);
           }}>
           {img === null && (
-            <label className='custom-file-input custom-fix-3'>
+            <label className='custom-file-input  '>
               <input type='file' onChange={handleChange} />
             </label>
           )}

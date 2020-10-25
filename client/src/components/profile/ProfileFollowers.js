@@ -30,7 +30,7 @@ const ProfileFollowers = ({
           <div className='img-grid'>
             {profiles.length > 0 ? (
               profiles.map((profile) => (
-                <Link to={`/${profile.alias}`}>
+                <Link key={profile._id} to={`/${profile.alias}`}>
                   <motion.div
                     className='img-wrap'
                     layout

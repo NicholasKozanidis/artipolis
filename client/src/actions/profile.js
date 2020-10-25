@@ -55,6 +55,18 @@ export const getProfiles = () => async (dispatch) => {
     });
   }
 };
+export const clearProfile = () => (dispatch) => {
+  try {
+    dispatch({
+      type: CLEAR_PROFILE,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
 
 // Get profile by ID
 export const getProfileById = (userId) => async (dispatch) => {

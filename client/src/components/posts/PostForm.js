@@ -40,7 +40,7 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
           <img src={preview} />
         </div>
         <form
-          className='post-form  my-30'
+          className='post-form  my-30 '
           onSubmit={(e) => {
             e.preventDefault();
             let formData = new FormData();
@@ -58,7 +58,7 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
 
           <div>{<ProgressBar imageloading={imageloading} />}</div>
           <textarea
-            className='custom-text-area  my-2'
+            className='custom-text-area my-3'
             name='text'
             placeholder='Artwork Description'
             cols='30'

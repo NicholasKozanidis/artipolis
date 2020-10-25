@@ -19,7 +19,7 @@ import {
 
 const initialState = {
   profile: null,
-  follow: false,
+  follow: null,
   imageloading: null,
   profiles: [],
   likedposts: [],
@@ -62,6 +62,12 @@ export default function (state = initialState, action) {
         ...state,
         imageloading: null,
       };
+    case CLEAR_PROFILE:
+      return {
+        ...state,
+        profile: null,
+        follow: null,
+      };
 
     case UPDATE_FOLLOW:
       return {
@@ -78,11 +84,14 @@ export default function (state = initialState, action) {
     case FOLLOW_TOGGLE:
       return {
         ...state,
-        follow: state.profile.followers.some((follower) =>
-          follower._id === payload.auth_id
-            ? { follow: false }
-            : { follow: true }
-        ),
+        profile: { ...state.profile },
+        follow:
+          payload.id === state.profile.user._id &&
+          ((state.profile.followers.length === 0 && false) ||
+            state.profile.followers.some((follower) =>
+              follower._id !== payload.auth_id ? false : true
+            )),
+        loading: false,
       };
 
     case GET_PROFILES:
@@ -106,6 +115,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         profile: null,
+        follow: state.follow,
         loading: false,
       };
 

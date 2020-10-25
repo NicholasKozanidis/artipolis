@@ -17,40 +17,79 @@ const Navbar = ({
   }, [getCurrentProfile, auth]);
 
   const authLinks = (
-    <ul>
-      <li>
-        <Link to='/profiles'>Artists</Link>
-      </li>
-      <li>
-        <i className='fas fa-cloud-upload-alt'></i>
+    <Fragment>
+      <ul className='regular-nav'>
+        <li>
+          <Link to='/profiles'>Artists</Link>
+        </li>
+        <li>
+          <i className='fas fa-cloud-upload-alt'></i>
 
-        <Link to='/upload'>Upload</Link>
-      </li>
-      <li>
-        <Link to='/posts'>Gallery</Link>
-      </li>
+          <Link to='/upload'>Upload</Link>
+        </li>
+        <li>
+          <Link to='/posts'>Gallery</Link>
+        </li>
 
-      <li className='dropdown'>
+        <li className='dropdown'>
+          <span tabIndex='-1' className='dropdown__title' id='dropdown-title'>
+            {' '}
+            <i className='fas fa-user'></i>{' '}
+          </span>
+          <ul className='dropdown__menu' aria-labelledby='dropdown-title'>
+            <li>
+              <Link to='/me'>View Profile</Link>
+            </li>
+            <li>
+              <Link to='/edit-profile'>Edit Profile</Link>
+            </li>
+            <li>
+              <Link to='/login' onClick={() => logout(history)}>
+                <i className='fas fa-sign-out-alt'></i>{' '}
+                <span className='hide-sm'>Logout</span>
+              </Link>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul className='dropdown burger'>
         <span tabIndex='-1' className='dropdown__title' id='dropdown-title'>
           {' '}
           <i className='fas fa-user'></i>{' '}
         </span>
         <ul className='dropdown__menu' aria-labelledby='dropdown-title'>
           <li>
-            <Link to='/me'>View Profile</Link>
+            {' '}
+            <Link to='/profiles'>Artists</Link>
           </li>
           <li>
-            <Link to='/edit-profile'>Edit Profile</Link>
+            {' '}
+            <Link to='/upload'>Upload</Link>
           </li>
           <li>
-            <Link to='/login' onClick={() => logout(history)}>
-              <i className='fas fa-sign-out-alt'></i>{' '}
-              <span className='hide-sm'>Logout</span>
-            </Link>
+            {' '}
+            <Link to='/posts'>Gallery</Link>
+          </li>
+          <li>
+            <ul className='dropdown__menu' aria-labelledby='dropdown-title'>
+              <li>
+                <Link to='/me'>View Profile</Link>
+              </li>
+              <li>
+                <Link to='/edit-profile'>Edit Profile</Link>
+              </li>
+              <li>
+                <Link to='/login' onClick={() => logout(history)}>
+                  <i className='fas fa-sign-out-alt'></i>{' '}
+                  <span className='hide-sm'>Logout</span>
+                </Link>
+              </li>
+            </ul>
           </li>
         </ul>
-      </li>
-    </ul>
+      </ul>
+    </Fragment>
   );
 
   const guestLinks = (

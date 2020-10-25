@@ -23,7 +23,7 @@ const ProfileItem = ({
         {location && (
           <div>
             {' '}
-            <i class='fas fa-map-marker'> </i> {location}
+            <i className='fas fa-map-marker'> </i> {location}
           </div>
         )}
       </div>

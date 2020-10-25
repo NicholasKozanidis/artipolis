@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UploadProfileImage from './UploadProfileImage';
 import { editProfile, getCurrentProfile } from '../../actions/profile';
+import { useHistory } from 'react-router-dom';
 
 const initialState = {
   company: '',
@@ -30,6 +31,9 @@ const EditProfile = ({
 
   useEffect(() => {
     getCurrentProfile();
+    if (auth === null || profile === null) {
+      history.push('/posts');
+    }
     if (!loading && profile) {
       const profileData = { ...initialState };
       for (const key in profile) {
@@ -85,7 +89,7 @@ const EditProfile = ({
         <div className='form-group'>
           <label className='edit-prof-label'>Web</label>
 
-          <input
+          <textarea
             className='custom-text-area'
             type='text'
             name='website'
@@ -96,7 +100,7 @@ const EditProfile = ({
         <div className='form-group'>
           <label className='edit-prof-label'>Location</label>
 
-          <input
+          <textarea
             className='custom-text-area'
             type='text'
             name='location'
@@ -107,7 +111,7 @@ const EditProfile = ({
         <div className='form-group'>
           <label className='edit-prof-label'>Employment status</label>
 
-          <input
+          <textarea
             className='custom-text-area'
             type='text'
             name='status'
@@ -118,7 +122,7 @@ const EditProfile = ({
         <div className='form-group'>
           <label className='edit-prof-label'>Software skills</label>
 
-          <input
+          <textarea
             className='custom-text-area'
             type='text'
             name='skills'
