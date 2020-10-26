@@ -460,6 +460,10 @@ label input[type='file'] {
   -webkit-user-select: none;
   cursor: pointer;
 
+  @media only screen and (min-width: 375px) {
+    left: 33%;
+  }
+
   @media screen and (max-width: 420px) {
     top: 95%;
     left: 35%;
@@ -708,6 +712,10 @@ button {
   left: 22%;
   display: flex;
   justify-content: center;
+
+  @media only screen and (min-width: 375px) {
+    top: 43%;
+  }
 
   @media only screen and (min-width: 640px) {
     min-width: 300px;

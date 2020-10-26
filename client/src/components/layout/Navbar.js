@@ -56,7 +56,7 @@ const Navbar = ({
       <ul className='dropdown burger'>
         <span tabIndex='-1' className='dropdown__title' id='dropdown-title'>
           {' '}
-          <i className='fas fa-user'></i>{' '}
+          <i className='fas fa-bars'></i>
         </span>
         <ul className='dropdown__menu' aria-labelledby='dropdown-title'>
           <li>

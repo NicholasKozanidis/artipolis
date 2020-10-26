@@ -19,6 +19,7 @@ const SearchBar = ({ searchNav, post: { searchposts } }) => {
 
     if (selected.length === 0) {
       searchNav('');
+      history.push('/posts');
     }
   };
 

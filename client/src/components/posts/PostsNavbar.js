@@ -31,22 +31,24 @@ const PostsNavbar = ({ latestNav, trendingNav, post: { posts } }) => {
     history.push(`/posts/?sort_by=trending`);
     active = 'nav bg-dark active';
   }
-  const profileLinks = (
-    <ul>
-      <li>
-        <a onClick={handleTrending} href='#'>
-          Trending
-        </a>
-      </li>
-      <li>
-        <a onClick={handleLatest} href='#'>
-          Latest
-        </a>
-      </li>
-    </ul>
-  );
 
-  return <nav>{<Fragment>{profileLinks}</Fragment>}</nav>;
+  return (
+    <nav>
+      {' '}
+      <ul>
+        <li>
+          <a onClick={handleTrending} href='#'>
+            Trending
+          </a>
+        </li>
+        <li>
+          <a onClick={handleLatest} href='#'>
+            Latest
+          </a>
+        </li>
+      </ul>
+    </nav>
+  );
 };
 
 PostsNavbar.propTypes = {
