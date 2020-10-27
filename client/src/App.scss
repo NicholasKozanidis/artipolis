@@ -406,13 +406,18 @@ nav {
 }
 .custom-fix {
   margin-top: 0;
-  margin-left: 43%;
+  margin-left: 45%;
 }
+
 .custom-fix-2 {
   margin-top: 0;
   margin-left: 5%;
   overflow: scroll;
   font-size: smaller;
+}
+
+.custom-fix-3 {
+  margin-left: -5%;
 }
 
 .line {
@@ -684,12 +689,12 @@ button {
   z-index: 1;
 }
 
-.searchBox:hover > .searchInput {
+.active-search > .searchInput {
   width: 260px;
   padding: 0 6px;
 }
 
-.searchBox:hover > .searchButton {
+.active-search > .searchButton {
   background: $primary;
   color: #2f3640;
 }
@@ -705,6 +710,15 @@ button {
   justify-content: center;
   align-items: center;
   transition: 0.4s;
+}
+
+.searchButton:hover {
+  border: solid 2px $primary2;
+  color: $primary;
+}
+.searchButton:active,
+.searchButton:focus {
+  outline: none;
 }
 
 .searchInput {

@@ -1,9 +1,7 @@
 const config = require('config');
-
 const CLOUD_NAME = config.get('cloudname');
 const API_KEY = config.get('apiKEY');
 const API_SECRET = config.get('apiSECRET');
-
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');

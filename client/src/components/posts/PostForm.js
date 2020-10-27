@@ -50,7 +50,7 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
             setImg(null);
             setPreview(null);
           }}>
-          <label className='custom-file-input'>
+          <label className='custom-file-input custom-fix-3'>
             <input onChange={handleChange} type='file' />
           </label>
 

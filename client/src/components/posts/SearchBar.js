@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -10,6 +10,13 @@ const SearchBar = ({ searchNav, post: { searchposts } }) => {
   const [search, setSearch] = useState('');
   let history = useHistory();
   const location = useLocation();
+
+  useEffect(() => {
+    if (location.search.includes('?search=')) {
+      let query = location.search.split('=')[1];
+      setSearch(query);
+    }
+  }, [location.search]);
 
   const handleChange = (e) => {
     let selected = e.target.value;
@@ -26,27 +33,39 @@ const SearchBar = ({ searchNav, post: { searchposts } }) => {
     if (search.length > 0) history.push(`/posts/?search=${search}`);
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    history.push(`/posts/?search=`);
+  };
+
   const clearURL = () => {
-    if (location.search.length > 0) {
-      history.push('/posts');
+    if (location.search.includes('?search=')) {
+      let query = location.search.split('=')[1];
+      if (query.length === 0) history.push('/posts');
     }
   };
 
   return (
     <Fragment>
-      <motion.div className='searchBox' onHoverEnd={handleURL}>
+      <motion.div
+        className={
+          location.search.includes('?search=')
+            ? 'searchBox active-search'
+            : 'searchBox'
+        }
+        onHoverEnd={handleURL}>
         <input
           className='searchInput'
           type='text'
           name='search'
           value={search}
           onChange={handleChange}
-          onFocus={clearURL}
+          onBlur={clearURL}
           placeholder='Search'
         />
-        <div className='searchButton' href='#'>
+        <button onClick={handleClick} className='searchButton' href='#'>
           <i className='fas fa-search'></i>
-        </div>
+        </button>
         <br />
       </motion.div>
       {search.length > 0 && searchposts.length === 0 && (
