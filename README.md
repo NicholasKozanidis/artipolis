@@ -1,4 +1,4 @@
-#Artipolis MERN stack social media web app
+Artipolis MERN stack social media web app for artists.
 
 ### Add a default.json file in config folder with
 

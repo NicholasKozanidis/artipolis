@@ -612,7 +612,6 @@ button {
   min-width: 100%;
   min-height: 25%;
   max-width: 150%;
-  height: 100px;
   position: absolute;
   text-align: center;
   justify-content: center;
@@ -638,7 +637,8 @@ button {
   margin-top: 30px;
   width: 200px;
   height: 40px;
-  top: -10%;
+  top: -15px;
+  left: 5px;
   color: $primary;
   text-overflow: ellipsis;
   overflow: hidden;
