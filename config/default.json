@@ -1,7 +1,0 @@
-{
-  "cloudname": "freakolas",
-  "apiKEY": "618414258757733",
-  "apiSECRET": "cHWMmiB7W0xiY1bgaXjRWWtoNn8",
-  "mongoURI": "mongodb+srv://nick:KakaDoo1992@cluster0.kfzg8.mongodb.net/Project0?retryWrites=true&w=majority",
-  "jwtSecret": "mySecretToken"
-}
