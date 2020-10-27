@@ -20,7 +20,7 @@ const storage = new CloudinaryStorage({
     folder: 'uploads',
     allowedFormats: ['jpg', 'png'],
 
-    format: async (req, file) => file.contentType, // supports promises as well
+    format: async (req, file) => file.contentType,
     public_id: (req, file) => file.id,
   },
 });

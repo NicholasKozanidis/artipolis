@@ -18,12 +18,13 @@ const ProfileItem = ({
       <div className='post-details'>
         <span> {name}</span>
         <br />
-        {status}
+        <span className='status-text'>{status}</span>
         <br />
         {location && (
           <div>
-            {' '}
-            <i className='fas fa-map-marker'> </i> {location}
+            <span className='location'>
+              <i className='fas fa-map-marker'> </i> {location}
+            </span>
           </div>
         )}
       </div>

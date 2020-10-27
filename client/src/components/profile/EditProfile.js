@@ -1,10 +1,9 @@
 import React, { useState, Fragment, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UploadProfileImage from './UploadProfileImage';
 import { editProfile, getCurrentProfile } from '../../actions/profile';
-import { useHistory } from 'react-router-dom';
 
 const initialState = {
   company: '',

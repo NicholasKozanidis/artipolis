@@ -9,7 +9,6 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
   const [img, setImg] = useState(null);
   const [preview, setPreview] = useState(null);
   const types = ['image/png', 'image/jpeg'];
-  const mediaStream = new MediaStream();
 
   const handleChange = (e) => {
     let selected = e.target.files[0];
@@ -36,9 +35,8 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
 
       <div className='post-form bg-dark'>
         <div className='img-preview'>
-          {' '}
-          <img src={preview} />
-        </div>
+          {preview !== null && <img src={preview} />}
+        </div>{' '}
         <form
           className='post-form  my-30 '
           onSubmit={(e) => {

@@ -1,13 +1,7 @@
 /* Global Styles */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:reg,wght@0,200;1,300&display=swap');
-root {
-  --primary-color: #17a2b8;
-  --dark-color: #343a40;
-  --light-color: #f4f4f4;
-  --danger-color: #dc3545;
-  --success-color: #28a745;
-}
+
 $color: #343a40;
 $primary: #cc6686;
 $primary2: #ff687e;
@@ -146,8 +140,6 @@ nav {
   }
 }
 
-/*Profiles*/
-
 /* Progress Bar */
 .progress-bar {
   height: 5px;
@@ -187,6 +179,14 @@ nav {
 .lead {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+
+.text-logo {
+  position: absolute;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  top: 15px;
+  margin-left: 5rem;
 }
 
 .text-center {
@@ -454,8 +454,8 @@ label input[type='file'] {
   padding: 0.4rem 0.9rem 0.5rem;
   display: flexbox;
   transition: all 0.4s ease;
-  left: 42%;
   top: 15px;
+  margin-left: 10%;
   outline: none;
   -webkit-user-select: none;
   cursor: pointer;
@@ -464,9 +464,9 @@ label input[type='file'] {
     left: 33%;
   }
 
-  @media screen and (max-width: 420px) {
-    top: 95%;
-    left: 35%;
+  @media screen and (max-width: 414px) {
+    top: 20px;
+    left: 20%;
   }
 }
 
@@ -612,6 +612,7 @@ button {
   min-width: 100%;
   min-height: 25%;
   max-width: 150%;
+  height: 100px;
   position: absolute;
   text-align: center;
   justify-content: center;
@@ -621,6 +622,27 @@ button {
 
   top: 75%;
   left: 0;
+}
+
+.location {
+  position: relative;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  left: -30%;
+  top: 45%;
+  white-space: nowrap;
+}
+
+.status-text {
+  position: relative;
+  margin-top: 30px;
+  width: 200px;
+  height: 40px;
+  top: -10%;
+  color: $primary;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .img-wrap:hover .post-details {
@@ -703,42 +725,73 @@ button {
   font-size: 22px;
 }
 
+.img-preview img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  display: flexbox;
+}
+
 .img-preview {
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  display: flex;
   position: absolute;
   width: 300px;
   height: 250px;
-  border: dotted 2px rgba($bg3, 1);
   top: 35%;
   left: 22%;
-  display: flex;
-  justify-content: center;
+  border: 1px dotted $primary;
 
-  @media only screen and (min-width: 375px) {
-    top: 43%;
+  @media (min-width: 315px) {
+    max-width: 250px;
+    max-height: 150px;
+    top: 35%;
+    left: 18%;
+  }
+  @media (min-width: 320px) {
+    max-width: 250px;
+    max-height: 150px;
+    top: 47%;
+    left: 11%;
+  }
+  @media (min-width: 375px) {
+    max-width: 250px;
+    max-height: 150px;
+    top: 42%;
+    left: 18%;
+  }
+
+  @media (min-width: 414px) {
+    max-width: 300px;
+    max-height: 200px;
+    top: 34%;
+    left: 20%;
   }
 
   @media only screen and (min-width: 640px) {
-    min-width: 300px;
-    min-height: 250px;
-    top: 31%;
+    min-width: 500px;
+    min-height: 400px;
+    top: 28%;
     left: 22%;
   }
   @media only screen and (min-width: 800px) {
     min-width: 500px;
     min-height: 400px;
-    top: 35%;
+    top: 30%;
     left: 25%;
   }
   @media only screen and (min-width: 1024px) {
     min-width: 600px;
     min-height: 500px;
     left: 25%;
-    top: 35%;
+    top: 30%;
   }
   @media only screen and (min-width: 1280px) {
-    min-width: 35%;
+    max-width: 35%;
     min-height: 500px;
-    left: 35%;
+    left: 27%;
     top: 35%;
   }
   @media only screen and (min-width: 1600px) {

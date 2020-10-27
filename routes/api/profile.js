@@ -202,7 +202,7 @@ router.get('/:alias/following', async ({ params: { alias } }, res) => {
   }
 });
 // @route    GET api/profile/:alias/following
-// @desc     Get profiles followed by alias
+// @desc     Get profiles following  alias
 // @access   Public
 router.get('/:alias/followers', async ({ params: { alias } }, res) => {
   try {
@@ -312,7 +312,7 @@ router.put('/unfollow/:id', auth, async (req, res) => {
   }
 });
 
-//post avatar
+//post avatar & create profile if it doesnt exist
 router.post('/image', auth, upload.single('img'), async (req, res) => {
   try {
     let user = await User.findById(req.user.id).select('-password');
@@ -339,7 +339,6 @@ router.post('/image', auth, upload.single('img'), async (req, res) => {
         status: '',
       };
 
-      // Using upsert option (creates new doc if no match is found):
       let profile = await Profile.findOneAndUpdate(
         { user: req.user.id },
         { $set: profileFields },

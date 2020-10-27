@@ -2,7 +2,6 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-
 import { useHistory } from 'react-router-dom';
 import { searchNav } from '../../actions/post';
 import { motion } from 'framer-motion';

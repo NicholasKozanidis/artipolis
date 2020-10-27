@@ -116,8 +116,8 @@ const Navbar = ({
             }
             alt=''
             className='logo-img '
-          />{' '}
-          Artipolis
+          />
+          <div className='text-logo'>Artipolis</div>
         </Link>
       </h1>
       {

@@ -10,7 +10,7 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
 // @route    POST api/users
-// @desc     Register user
+// @desc     Register user & create empty profile
 // @access   Public
 router.post(
   '/',

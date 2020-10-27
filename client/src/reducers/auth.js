@@ -5,7 +5,6 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  ADD_PROFILE_IMAGE,
   LOGOUT,
 } from '../actions/types';
 
