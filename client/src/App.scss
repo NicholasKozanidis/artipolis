@@ -79,6 +79,11 @@ img {
   margin-left: 30%;
 }
 
+.highlight {
+  border-top-color: $primary;
+  color: $primary;
+}
+
 nav {
   background-color: $bg;
   display: flex;
@@ -118,8 +123,7 @@ nav {
         transition: $transition;
 
         &:hover,
-        &:focus,
-        &.activate {
+        &:focus {
           border-top-color: $primary;
           color: $primary;
           z-index: 5;

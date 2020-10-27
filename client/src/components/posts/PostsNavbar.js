@@ -9,9 +9,6 @@ const PostsNavbar = ({ latestNav, trendingNav, post: { posts } }) => {
   let history = useHistory();
   const location = useLocation();
 
-  let category = 'nav bg-dark ';
-  let active = null;
-
   useEffect(() => {
     if (location.search.length === 0) {
       history.push('/posts/?sort_by=latest');
@@ -22,14 +19,12 @@ const PostsNavbar = ({ latestNav, trendingNav, post: { posts } }) => {
     e.preventDefault();
     latestNav();
     history.push('/posts/?sort_by=latest');
-    active = 'nav bg-dark active';
   }
 
   function handleTrending(e) {
     e.preventDefault();
     trendingNav();
     history.push(`/posts/?sort_by=trending`);
-    active = 'nav bg-dark active';
   }
 
   return (
@@ -37,12 +32,18 @@ const PostsNavbar = ({ latestNav, trendingNav, post: { posts } }) => {
       {' '}
       <ul>
         <li>
-          <a onClick={handleTrending} href='#'>
+          <a
+            className={location.search.includes('trending') ? 'highlight' : ''}
+            onClick={handleTrending}
+            href='#'>
             Trending
           </a>
         </li>
         <li>
-          <a onClick={handleLatest} href='#'>
+          <a
+            className={location.search.includes('latest') ? 'highlight' : ''}
+            onClick={handleLatest}
+            href='#'>
             Latest
           </a>
         </li>

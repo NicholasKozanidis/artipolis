@@ -1,47 +1,80 @@
 import React, { Fragment } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { useHistory, useLocation, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const ProfileNavbar = ({ auth, profile: { profile } }) => {
-  const profileLinks = (
-    <ul>
-      <li>
-        <Link to={`/${profile.alias}`}>Posts</Link>
-      </li>
-      <li>
-        <Link to={`/${profile.alias}/liked`}>
-          Liked
-          <span>
-            {profile.liked.length > 0 && <span>({profile.liked.length})</span>}
-          </span>
-        </Link>
-      </li>
-      <li>
-        <Link to={`/${profile.alias}/following`}>
-          Following
-          <span>
-            {profile.following.length > 0 && (
-              <span>({profile.following.length})</span>
-            )}
-          </span>
-        </Link>
-      </li>
-      <li>
-        <Link to={`/${profile.alias}/followers`}>
-          Followers
-          <span>
-            {profile.followers.length > 0 && (
-              <span>({profile.followers.length})</span>
-            )}
-          </span>
-        </Link>
-      </li>
-    </ul>
-  );
+  const location = useLocation();
+  console.log(location.pathname);
 
   return (
-    <nav className='nav  bg-dark'>{<Fragment>{profileLinks}</Fragment>}</nav>
+    <nav>
+      <ul>
+        <li>
+          <Link
+            className={
+              location.pathname.includes(`${profile.alias}`) &&
+              location.pathname.length === profile.alias.length + 1
+                ? 'highlight'
+                : ''
+            }
+            to={`/${profile.alias}`}>
+            Posts
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={
+              location.pathname.includes(`${profile.alias}`) &&
+              location.pathname.includes('liked')
+                ? 'highlight'
+                : ''
+            }
+            to={`/${profile.alias}/liked`}>
+            Liked
+            <span>
+              {profile.liked.length > 0 && (
+                <span>({profile.liked.length})</span>
+              )}
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={
+              location.pathname.includes(`${profile.alias}`) &&
+              location.pathname.includes('following')
+                ? 'highlight'
+                : ''
+            }
+            to={`/${profile.alias}/following`}>
+            Following
+            <span>
+              {profile.following.length > 0 && (
+                <span>({profile.following.length})</span>
+              )}
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={
+              location.pathname.includes(`${profile.alias}`) &&
+              location.pathname.includes('followers')
+                ? 'highlight'
+                : ''
+            }
+            to={`/${profile.alias}/followers`}>
+            Followers
+            <span>
+              {profile.followers.length > 0 && (
+                <span>({profile.followers.length})</span>
+              )}
+            </span>
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
