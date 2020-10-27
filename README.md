@@ -6,7 +6,7 @@ Live on: https://calm-badlands-61839.herokuapp.com
 
 ```
 {
-    {
+
   "cloudname": "your_cloudinary_name",
   "apiKEY": "your_cloudinary_key",
   "apiSECRET": "your_cloudinary_secret",
