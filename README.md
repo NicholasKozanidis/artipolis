@@ -1,5 +1,7 @@
 Artipolis MERN stack social media web app for artists.
 
+Live on: https://calm-badlands-61839.herokuapp.com
+
 ### Add a default.json file in config folder with
 
 ```
