@@ -755,11 +755,10 @@ button {
   align-items: center;
   overflow: hidden;
   display: flex;
-  position: fixed;
+  position: absolute;
   width: 300px;
   height: 250px;
   top: 35%;
-  transform: translate(0%, -0%);
   border: 1px dotted $primary;
 
   @media (min-width: 315px) {

@@ -68,17 +68,19 @@ const SearchBar = ({ searchNav, post: { searchposts } }) => {
         </button>
         <br />
       </motion.div>
-      {search.length > 0 && searchposts.length === 0 && (
-        <motion.div
-          animate={{
-            x: [-10, 0.5, 1],
-            opacity: [0, 0.8, 1],
-            scale: [0.8, 1.02, 0.98, 1],
-          }}
-          className='noResults'>
-          No Artwork found
-        </motion.div>
-      )}
+      {search.length > 0 &&
+        location.search.includes('?search=') &&
+        searchposts.length === 0 && (
+          <motion.div
+            animate={{
+              x: [-10, 0.5, 1],
+              opacity: [0, 0.8, 1],
+              scale: [0.8, 1.02, 0.98, 1],
+            }}
+            className='noResults'>
+            No Artwork found
+          </motion.div>
+        )}
     </Fragment>
   );
 };
