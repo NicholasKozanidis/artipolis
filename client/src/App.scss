@@ -755,11 +755,11 @@ button {
   align-items: center;
   overflow: hidden;
   display: flex;
-  position: absolute;
+  position: fixed;
   width: 300px;
   height: 250px;
   top: 35%;
-  left: 22%;
+  transform: translate(0%, -0%);
   border: 1px dotted $primary;
 
   @media (min-width: 315px) {
@@ -790,9 +790,9 @@ button {
 
   @media only screen and (min-width: 640px) {
     min-width: 500px;
-    min-height: 400px;
-    top: 28%;
-    left: 22%;
+    min-height: 300px;
+    top: 30%;
+    left: 15%;
   }
   @media only screen and (min-width: 800px) {
     min-width: 500px;
