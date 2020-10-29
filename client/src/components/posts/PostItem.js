@@ -11,7 +11,6 @@ const PostItem = ({
   deletePost,
   auth,
   post: { _id, text, name, imagepost, avatar, user, likes, comments, date },
-  showActions,
 }) => {
   return (
     <Fragment>

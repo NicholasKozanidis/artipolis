@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getPosts } from '../../actions/post';
 import { motion } from 'framer-motion';
 
@@ -15,21 +16,22 @@ const ProfileGallery = ({ auth, profile, getPosts, post: { posts, user } }) => {
         {posts
           .filter((post) => post.user._id === profile.profile.user._id)
           .map((filteredPost) => (
-            <motion.div
-              key={filteredPost._id}
-              className='img-wrap'
-              layout
-              whileHover={{ opacity: 1 }}
-              s
-              onClick={() => console.log('clicked')}>
-              <div className='post-details'>
-                <img src={filteredPost.user.avatar.url} />
-                <span> {filteredPost.user.name}</span>
-                <br />
-                {filteredPost.text}
-              </div>
-              <img src={filteredPost.imagepost.url} alt='' />{' '}
-            </motion.div>
+            <Link to={`/posts/${filteredPost._id}`}>
+              <motion.div
+                key={filteredPost._id}
+                className='img-wrap'
+                layout
+                whileHover={{ opacity: 1 }}
+                s>
+                <div className='post-details'>
+                  <img src={filteredPost.user.avatar.url} />
+                  <span> {filteredPost.user.name}</span>
+                  <br />
+                  {filteredPost.text}
+                </div>
+                <img src={filteredPost.imagepost.url} alt='' />{' '}
+              </motion.div>
+            </Link>
           ))}
       </div>
     </Fragment>
