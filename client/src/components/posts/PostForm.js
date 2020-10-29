@@ -27,6 +27,12 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
     }
   };
 
+  const clearPrev = (e) => {
+    e.preventDefault();
+    setPreview(null);
+    setImg(null);
+  };
+
   return (
     <Fragment>
       <div className='bg-dark p'>
@@ -34,6 +40,15 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
       </div>
 
       <div className='post-form bg-dark'>
+        {preview !== null && (
+          <button
+            button
+            onClick={(e) => clearPrev(e)}
+            type='button'
+            className='btn btn-danger clear-prev'>
+            <i className='fas fa-times'></i>
+          </button>
+        )}
         <div className='img-preview'>
           {preview !== null && <img src={preview} />}
         </div>{' '}
@@ -49,6 +64,15 @@ const PostForm = ({ post: { imageloading }, addPost }) => {
             setText('');
             setImg(null);
             setPreview(null);
+            setTimeout(
+              () =>
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                }),
+              1000
+            );
           }}>
           <label className='custom-file-input custom-fix-3'>
             <input onChange={handleChange} type='file' />

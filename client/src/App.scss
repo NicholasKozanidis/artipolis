@@ -336,7 +336,7 @@ nav {
 .bg-danger,
 .badge-danger,
 .alert-danger {
-  background: $primary2;
+  background: $primary;
   color: #fff;
 }
 
@@ -367,7 +367,8 @@ nav {
 }
 
 .btn:hover {
-  color: $primary;
+  color: black;
+  background: saturate($color: $primary, $amount: 10);
   transition: all 0.3s ease;
   border: #ccc solid 0.5px;
 }
@@ -747,7 +748,25 @@ button {
   flex-shrink: 0;
   min-width: 100%;
   min-height: 100%;
+  margin: auto;
   display: flexbox;
+}
+
+.clear-prev {
+  position: absolute;
+  justify-content: center;
+  display: flex;
+  left: 75%;
+  top: 30%;
+  border-radius: 20%;
+
+  @media only screen and (max-width: 640px) {
+    max-width: 20px;
+    min-height: 20px;
+
+    top: 35%;
+    left: 85%;
+  }
 }
 
 .img-preview {
