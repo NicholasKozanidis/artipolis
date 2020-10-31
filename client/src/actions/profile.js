@@ -161,7 +161,7 @@ export const editProfile = (formData, history) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(setAlert('Profile Updated'));
+    dispatch(setAlert('Profile Updated', 'success'));
   } catch (err) {
     const errors = err.response.data.errors;
 

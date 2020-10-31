@@ -66,6 +66,15 @@ const EditProfile = ({
   const onSubmit = (e) => {
     e.preventDefault();
     editProfile(formData, history);
+    setTimeout(
+      () =>
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        }),
+      600
+    );
   };
   return (
     <Fragment>
