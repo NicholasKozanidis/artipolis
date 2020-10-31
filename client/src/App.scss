@@ -81,8 +81,9 @@ img {
 
 .regular-nav {
   margin-left: 45%;
+  display: flex;
   Link {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -92,7 +93,9 @@ img {
 }
 
 .fa-cloud-upload-alt {
-  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0;
+  margin: 0;
 }
 
 nav {
@@ -111,7 +114,7 @@ nav {
     grid-auto-flow: column;
 
     > li {
-      margin-right: 4rem;
+      margin-right: 2rem;
 
       a,
       .dropdown__title {
@@ -119,7 +122,7 @@ nav {
         text-align: center;
         display: inline-block;
         color: #fff;
-        font-size: 1.125rem;
+        font-size: 1.12rem;
         z-index: 5;
 
         &:focus {
@@ -379,7 +382,7 @@ nav {
 
 .btn:hover {
   color: black;
-  background: saturate($color: $primary, $amount: 10);
+  background: saturate($color: $primary, $amount: 4%);
   transition: all 0.3s ease;
   border: #ccc solid 0.5px;
 }
