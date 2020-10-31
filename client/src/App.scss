@@ -1,5 +1,9 @@
 /* Global Styles */
-
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('../src/fonts/robotomono.woff2') format('woff2'),
+    url('../src/fonts/robotomono.woff') format('woff');
+}
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:reg,wght@0,200;1,300&display=swap');
 
 $color: #343a40;
