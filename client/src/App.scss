@@ -25,8 +25,8 @@ $transition: 280ms all 120ms ease-out;
 body {
   font-family: 'Roboto Mono', 'GlyphWorld-AirLand', 'MADE Evolve Sans Regular',
     sans-serif;
-  font-size: 0.8rem;
-  line-height: 1.2;
+  font-size: 0.85rem;
+  line-height: 1.4;
   background-color: $bg2;
   color: #333;
 }
@@ -81,6 +81,9 @@ img {
 
 .regular-nav {
   margin-left: 45%;
+  Link {
+    font-size: 0.8rem;
+  }
 }
 
 .highlight {
