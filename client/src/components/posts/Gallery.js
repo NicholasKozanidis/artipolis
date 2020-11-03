@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SearchBar from './SearchBar';
 import PostsNavbar from './PostsNavbar';
+import SkeletonCrew from '../layout/SkeletonCrew';
 import { useLocation } from 'react-router-dom';
 import Posts from './Posts';
 import {
@@ -42,7 +43,10 @@ const Gallery = ({
         <PostsNavbar />
       </Fragment>
 
-      {(trendingposts.length > 0 && <Posts posts={trendingposts} />) ||
+      {(trendingposts.length === 0 &&
+        searchposts.length === 0 &&
+        latestposts.length === 0 && <SkeletonCrew />) ||
+        (trendingposts.length > 0 && <Posts posts={trendingposts} />) ||
         (searchposts.length > 0 && <Posts posts={searchposts} />) ||
         (latestposts.length > 0 && <Posts posts={latestposts} />)}
     </Fragment>
